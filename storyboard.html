@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Passage — Visual Storyboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&family=Noto+Serif:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a2e;
+    color: #eee;
+    font-family: 'Noto Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  .page-header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    border-bottom: 3px solid #e94560;
+  }
+  .page-header h1 {
+    font-family: 'Noto Serif', serif;
+    font-size: 2.4em;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .page-header p {
+    color: #a0b4d0;
+    margin-top: 8px;
+    font-size: 1.1em;
+  }
+
+  .storyboard-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+    flex-wrap: wrap;
+    background: #16213e;
+    border-bottom: 1px solid #2a3a5e;
+  }
+  .storyboard-nav button {
+    background: #0f3460;
+    color: #a0b4d0;
+    border: 1px solid #2a3a5e;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.3s;
+  }
+  .storyboard-nav button.active,
+  .storyboard-nav button:hover {
+    background: #e94560;
+    color: #fff;
+    border-color: #e94560;
+  }
+
+  .board-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  .scene-label {
+    text-align: center;
+    font-size: 0.85em;
+    color: #e94560;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .scene-title {
+    text-align: center;
+    font-size: 1.6em;
+    font-family: 'Noto Serif', serif;
+    margin-bottom: 6px;
+  }
+  .scene-desc {
+    text-align: center;
+    color: #8899aa;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  /* Phone mockup */
+  .phone-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .phone-frame {
+    width: 320px;
+    background: #000;
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 0 0 2px #333;
+    position: relative;
+  }
+  .phone-notch {
+    width: 120px;
+    height: 24px;
+    background: #000;
+    border-radius: 0 0 16px 16px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    top: -1px;
+  }
+  .phone-screen {
+    background: #1e1e2e;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 560px;
+    position: relative;
+  }
+
+  .phone-caption {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.8em;
+    color: #667;
+    max-width: 320px;
+  }
+
+  /* ===== SCREEN 1: Title Screen ===== */
+  .screen-title-bg {
+    background: linear-gradient(180deg, #0d1b2a 0%, #1b2838 40%, #2d4a3e 70%, #1a3a2a 100%);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .screen-title-bg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 200px;
+    background: radial-gradient(ellipse at 70% 0%, rgba(255,180,50,0.15) 0%, transparent 60%);
+  }
+
+  .title-silhouettes {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 180px;
+    overflow: hidden;
+  }
+  .silhouette {
+    position: absolute;
+    bottom: 0;
+  }
+  .sil-tree1 {
+    left: 10px;
+    width: 60px;
+    height: 160px;
+    background: linear-gradient(180deg, transparent 0%, #0a1a0a 20%);
+    clip-path: polygon(50% 0%, 80% 30%, 75% 32%, 90% 55%, 82% 57%, 95% 80%, 55% 80%, 55% 100%, 45% 100%, 45% 80%, 5% 80%, 18% 57%, 10% 55%, 25% 32%, 20% 30%);
+  }
+  .sil-temple {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 140px;
+    background: #0a1a0a;
+    clip-path: polygon(50% 0%, 60% 15%, 70% 15%, 75% 25%, 80% 25%, 82% 35%, 85% 35%, 85% 100%, 15% 100%, 15% 35%, 18% 35%, 20% 25%, 25% 25%, 30% 15%, 40% 15%);
+  }
+  .sil-tree2 {
+    right: 20px;
+    width: 50px;
+    height: 130px;
+    background: #0a1a0a;
+    clip-path: polygon(50% 0%, 55% 40%, 70% 35%, 60% 55%, 75% 50%, 58% 70%, 55% 100%, 45% 100%, 42% 70%, 25% 50%, 40% 55%, 30% 35%, 45% 40%);
+  }
+  .sil-ground {
+    left: 0; right: 0; bottom: 0;
+    height: 30px;
+    background: #0a1a0a;
+  }
+  .sil-figure1 {
+    left: 80px; bottom: 28px;
+    width: 20px; height: 50px;
+    background: #0f1f0f;
+    clip-path: polygon(50% 0%, 65% 10%, 60% 20%, 70% 50%, 60% 50%, 60% 100%, 40% 100%, 40% 50%, 30% 50%, 40% 20%, 35% 10%);
+  }
+  .sil-figure2 {
+    right: 80px; bottom: 28px;
+    width: 18px; height: 45px;
+    background: #0f1f0f;
+    clip-path: polygon(50% 0%, 65% 10%, 60% 20%, 70% 50%, 60% 50%, 60% 100%, 40% 100%, 40% 50%, 30% 50%, 40% 20%, 35% 10%);
+  }
+
+  .game-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 2.2em;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(255,180,50,0.3);
+    z-index: 2;
+    letter-spacing: 3px;
+  }
+  .game-subtitle {
+    font-size: 0.85em;
+    color: #8ba;
+    margin-top: 6px;
+    z-index: 2;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+  .title-buttons {
+    z-index: 2;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn-play {
+    background: linear-gradient(135deg, #e94560, #c73e54);
+    color: #fff;
+    border: none;
+    padding: 14px 60px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+  }
+  .btn-lang {
+    background: transparent;
+    color: #8ba;
+    border: 1px solid #3a5a4a;
+    padding: 8px 30px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    cursor: pointer;
+  }
+
+  /* ===== SCREEN 2: Character Select ===== */
+  .screen-charsel {
+    background: linear-gradient(180deg, #1a1a2e, #16213e);
+    min-height: 560px;
+    padding: 20px 16px;
+  }
+  .charsel-title {
+    text-align: center;
+    font-size: 0.75em;
+    color: #e94560;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .charsel-heading {
+    text-align: center;
+    font-family: 'Noto Serif', serif;
+    font-size: 1.3em;
+    margin-bottom: 16px;
+  }
+
+  .char-card {
+    background: linear-gradient(135deg, #1e2a4a, #1a2440);
+    border: 1px solid #2a3a5e;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .char-card:hover, .char-card.selected {
+    border-color: #e94560;
+    background: linear-gradient(135deg, #2a1a3a, #1e2040);
+    box-shadow: 0 0 20px rgba(233,69,96,0.15);
+  }
+  .char-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 8px; right: 12px;
+    color: #e94560;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .char-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    color: #fff;
+  }
+  .char-avatar.mali { background: linear-gradient(135deg, #e94560, #c73); }
+  .char-avatar.somchai { background: linear-gradient(135deg, #3a7bd5, #2a5a9e); }
+  .char-avatar.rina { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+  .char-avatar.anh { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+  .char-info h3 {
+    font-size: 1em;
+    margin-bottom: 2px;
+  }
+  .char-info .char-age {
+    font-size: 0.75em;
+    color: #e94560;
+    margin-bottom: 4px;
+  }
+  .char-info .char-desc {
+    font-size: 0.78em;
+    color: #8899aa;
+    line-height: 1.4;
+  }
+
+  .char-tag {
+    display: inline-block;
+    font-size: 0.65em;
+    background: rgba(233,69,96,0.15);
+    color: #e94560;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+  }
+
+  /* ===== SCREEN 3: Story Scene ===== */
+  .screen-story {
+    background: #1a1a2e;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .story-scene-art {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Village market scene */
+  .scene-market {
+    background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 30%, #98D8C8 60%, #7CB342 100%);
+  }
+  .market-sun {
+    width: 60px; height: 60px;
+    background: radial-gradient(circle, #FFE082, #FFB74D);
+    border-radius: 50%;
+    position: absolute;
+    top: 20px; right: 30px;
+    box-shadow: 0 0 40px rgba(255,183,77,0.5);
+  }
+  .market-clouds {
+    position: absolute;
+    top: 15px; left: 20px;
+    width: 80px; height: 25px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 20px;
+  }
+  .market-clouds::after {
+    content: '';
+    position: absolute;
+    top: -8px; left: 20px;
+    width: 40px; height: 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 20px;
+  }
+
+  .market-stall {
+    position: absolute;
+    bottom: 40px;
+    width: 100px;
+    height: 80px;
+  }
+  .stall1 {
+    left: 20px;
+    background: #8D6E63;
+    clip-path: polygon(0% 30%, 50% 0%, 100% 30%, 100% 100%, 0% 100%);
+  }
+  .stall1::after {
+    content: '';
+    position: absolute;
+    top: 30%; left: 10%; right: 10%;
+    height: 20px;
+    background: repeating-linear-gradient(90deg, #FF7043 0px, #FF7043 8px, #FFA726 8px, #FFA726 16px, #66BB6A 16px, #66BB6A 24px);
+    border-radius: 4px;
+  }
+  .stall2 {
+    right: 20px;
+    background: #A1887F;
+    clip-path: polygon(0% 25%, 50% 0%, 100% 25%, 100% 100%, 0% 100%);
+  }
+
+  .market-ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 45px;
+    background: linear-gradient(180deg, #8D6E63, #795548);
+  }
+
+  .market-figure-mali {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .fig-head {
+    width: 24px; height: 24px;
+    background: #FFCC80;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+  }
+  .fig-head::after {
+    content: '';
+    position: absolute;
+    top: -4px; left: -2px; right: -2px;
+    height: 14px;
+    background: #333;
+    border-radius: 50% 50% 0 0;
+  }
+  .fig-body {
+    width: 30px; height: 35px;
+    background: linear-gradient(180deg, #E91E63, #C2185B);
+    margin: 0 auto;
+    clip-path: polygon(20% 0%, 80% 0%, 90% 100%, 10% 100%);
+  }
+  .fig-legs {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+  .fig-leg {
+    width: 8px; height: 18px;
+    background: #5D4037;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .market-stranger {
+    position: absolute;
+    bottom: 40px;
+    right: 70px;
+  }
+  .stranger-body {
+    width: 28px; height: 40px;
+    background: linear-gradient(180deg, #37474F, #263238);
+    margin: 0 auto;
+    clip-path: polygon(15% 0%, 85% 0%, 95% 100%, 5% 100%);
+  }
+
+  .story-dialogue-box {
+    flex: 1;
+    background: linear-gradient(180deg, #16213e, #1a1a2e);
+    padding: 20px 16px;
+    position: relative;
+  }
+
+  .dialogue-speaker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .speaker-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #e94560;
+  }
+  .speaker-name {
+    font-size: 0.8em;
+    color: #e94560;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .dialogue-text {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #d0d8e0;
+    margin-bottom: 16px;
+  }
+
+  .dialogue-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+  }
+  .dot-ind {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #2a3a5e;
+  }
+  .dot-ind.active { background: #e94560; }
+
+  /* ===== SCREEN 4: Choice Point ===== */
+  .screen-choice {
+    background: #1a1a2e;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .choice-scene-art {
+    height: 240px;
+    background: linear-gradient(180deg, #1a1a2e 0%, #2d1b35 50%, #1a1a2e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .choice-scene-art::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(233,69,96,0.1), transparent 70%);
+  }
+
+  .phone-prop {
+    width: 50px; height: 80px;
+    background: linear-gradient(180deg, #333, #222);
+    border-radius: 8px;
+    border: 2px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 30px rgba(100,150,255,0.2);
+  }
+  .phone-glow {
+    width: 36px; height: 56px;
+    background: linear-gradient(180deg, #1565C0, #0D47A1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5em;
+    color: #90CAF9;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .thought-bubbles {
+    position: absolute;
+    top: 30px; right: 30px;
+  }
+  .thought-b {
+    width: 10px; height: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    position: absolute;
+  }
+  .thought-b:nth-child(1) { top: 0; left: 0; width: 6px; height: 6px; }
+  .thought-b:nth-child(2) { top: 10px; left: 12px; width: 8px; height: 8px; }
+  .thought-b:nth-child(3) { top: 22px; left: 5px; width: 12px; height: 12px; }
+
+  .choice-section {
+    flex: 1;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .choice-prompt {
+    text-align: center;
+    font-size: 0.95em;
+    color: #d0d8e0;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .choice-subtext {
+    text-align: center;
+    font-size: 0.7em;
+    color: #667;
+    margin-bottom: 16px;
+  }
+
+  .choice-btn {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #2a3a5e;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.85em;
+    line-height: 1.4;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .choice-safe {
+    background: linear-gradient(135deg, #1a2a1a, #1e3a2e);
+    color: #a0d0a0;
+    border-color: #2a4a2a;
+  }
+  .choice-safe:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 0 15px rgba(76,175,80,0.2);
+  }
+  .choice-risky {
+    background: linear-gradient(135deg, #2a1a1a, #3a1e2e);
+    color: #d0a0a0;
+    border-color: #4a2a2a;
+  }
+  .choice-risky:hover {
+    border-color: #e94560;
+    box-shadow: 0 0 15px rgba(233,69,96,0.2);
+  }
+  .choice-neutral {
+    background: linear-gradient(135deg, #1a1a2a, #1e2040);
+    color: #a0a0d0;
+    border-color: #2a2a4a;
+  }
+  .choice-neutral:hover {
+    border-color: #5C6BC0;
+    box-shadow: 0 0 15px rgba(92,107,192,0.2);
+  }
+
+  .choice-icon {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.1em;
+  }
+
+  /* ===== SCREEN 5: Consequence / Red Flag ===== */
+  .screen-consequence {
+    background: #1a1a2e;
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .consequence-banner {
+    padding: 16px;
+    text-align: center;
+  }
+  .consequence-banner.warning {
+    background: linear-gradient(135deg, #4a1a1a, #3a0a1a);
+    border-bottom: 2px solid #e94560;
+  }
+  .consequence-banner.safe {
+    background: linear-gradient(135deg, #1a3a1a, #0a3a1a);
+    border-bottom: 2px solid #4CAF50;
+  }
+
+  .banner-icon {
+    font-size: 2em;
+    margin-bottom: 6px;
+  }
+  .banner-label {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #e94560;
+    font-weight: 600;
+  }
+  .banner-label.safe-text { color: #4CAF50; }
+
+  .consequence-narrative {
+    padding: 20px 16px;
+    flex: 1;
+  }
+  .consequence-narrative p {
+    font-size: 0.9em;
+    line-height: 1.7;
+    color: #c0c8d0;
+    margin-bottom: 14px;
+  }
+
+  .redflag-card {
+    background: linear-gradient(135deg, #2a1020, #1e0a1a);
+    border: 1px solid #e94560;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 16px 16px;
+  }
+  .redflag-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .redflag-icon {
+    font-size: 1.3em;
+  }
+  .redflag-title {
+    font-size: 0.8em;
+    color: #e94560;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .redflag-text {
+    font-size: 0.82em;
+    color: #d0a0a0;
+    line-height: 1.6;
+  }
+  .redflag-text strong {
+    color: #e94560;
+  }
+
+  .safeflag-card {
+    background: linear-gradient(135deg, #102a10, #0a1e0a);
+    border: 1px solid #4CAF50;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 16px 16px;
+  }
+  .safeflag-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .safeflag-title {
+    font-size: 0.8em;
+    color: #4CAF50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .safeflag-text {
+    font-size: 0.82em;
+    color: #a0d0a0;
+    line-height: 1.6;
+  }
+
+  .continue-btn {
+    margin: 16px;
+    padding: 12px;
+    background: linear-gradient(135deg, #e94560, #c73e54);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  /* ===== SCREEN 6: Map/Progress ===== */
+  .screen-map {
+    background: linear-gradient(180deg, #0d1b2a, #1b2838);
+    min-height: 560px;
+    padding: 16px;
+  }
+  .map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .map-header h3 {
+    font-size: 1em;
+    font-family: 'Noto Serif', serif;
+  }
+  .chapter-badge {
+    font-size: 0.7em;
+    background: rgba(233,69,96,0.2);
+    color: #e94560;
+    padding: 4px 10px;
+    border-radius: 10px;
+  }
+
+  .journey-line {
+    position: relative;
+    padding-left: 30px;
+  }
+  .journey-line::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #4CAF50, #4CAF50 45%, #e94560 45%, #e94560 55%, #2a3a5e 55%);
+  }
+
+  .journey-node {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    border: 1px solid #2a3a5e;
+  }
+  .journey-node.completed { border-color: #2a4a2a; }
+  .journey-node.current { border-color: #e94560; background: rgba(233,69,96,0.05); }
+  .journey-node.locked { opacity: 0.4; }
+
+  .node-dot {
+    position: absolute;
+    left: -24px;
+    top: 14px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid #2a3a5e;
+    background: #1a1a2e;
+  }
+  .node-dot.done { background: #4CAF50; border-color: #4CAF50; }
+  .node-dot.active { background: #e94560; border-color: #e94560; box-shadow: 0 0 10px rgba(233,69,96,0.5); }
+
+  .node-title {
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .node-subtitle {
+    font-size: 0.72em;
+    color: #667;
+  }
+  .node-choice-made {
+    font-size: 0.68em;
+    color: #4CAF50;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .node-choice-made.bad { color: #e94560; }
+
+  .awareness-meter {
+    margin-top: 20px;
+    padding: 14px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid #2a3a5e;
+  }
+  .meter-label {
+    font-size: 0.75em;
+    color: #8899aa;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .meter-bar {
+    height: 8px;
+    background: #2a3a5e;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e94560, #FF9800, #4CAF50);
+    border-radius: 4px;
+    width: 45%;
+    transition: width 0.5s;
+  }
+  .meter-badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .badge {
+    font-size: 0.65em;
+    padding: 3px 8px;
+    border-radius: 8px;
+    background: rgba(76,175,80,0.15);
+    color: #4CAF50;
+    border: 1px solid rgba(76,175,80,0.3);
+  }
+  .badge.locked {
+    background: rgba(255,255,255,0.05);
+    color: #445;
+    border-color: #2a3a5e;
+  }
+
+  /* ===== SCREEN 7: Safe Ending ===== */
+  .screen-ending {
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .ending-safe {
+    background: linear-gradient(180deg, #0d2818, #1a3a2a, #0d1b2a);
+  }
+  .ending-art {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .ending-glow {
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(76,175,80,0.3), transparent 70%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+  }
+  .ending-particles {
+    position: absolute;
+    inset: 0;
+  }
+  .particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: rgba(76,175,80,0.5);
+    border-radius: 50%;
+  }
+  .particle:nth-child(1) { top: 20%; left: 20%; }
+  .particle:nth-child(2) { top: 30%; right: 25%; width: 3px; height: 3px; }
+  .particle:nth-child(3) { top: 60%; left: 30%; width: 5px; height: 5px; }
+  .particle:nth-child(4) { top: 15%; right: 35%; }
+  .particle:nth-child(5) { top: 50%; left: 70%; width: 3px; height: 3px; }
+
+  .ending-content {
+    flex: 1;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .ending-content h3 {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.4em;
+    color: #4CAF50;
+    margin-bottom: 10px;
+  }
+  .ending-content p {
+    font-size: 0.85em;
+    color: #a0c0a0;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .ending-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 16px 0;
+  }
+  .stat-box {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #4CAF50;
+  }
+  .stat-label {
+    font-size: 0.65em;
+    color: #667;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .share-btn {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .helpline-footer {
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.3);
+    text-align: center;
+    font-size: 0.7em;
+    color: #667;
+    line-height: 1.5;
+  }
+  .helpline-footer strong {
+    color: #e94560;
+  }
+
+  /* ===== Flow Diagram ===== */
+  .flow-section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .flow-title {
+    text-align: center;
+    font-family: 'Noto Serif', serif;
+    font-size: 1.4em;
+    margin-bottom: 6px;
+  }
+  .flow-subtitle {
+    text-align: center;
+    color: #667;
+    font-size: 0.85em;
+    margin-bottom: 30px;
+  }
+
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .flow-node {
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.82em;
+    max-width: 260px;
+    position: relative;
+  }
+  .flow-node.start {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    border: 2px solid #3a7bd5;
+    color: #90CAF9;
+  }
+  .flow-node.scene {
+    background: linear-gradient(135deg, #1e2a4a, #1a2440);
+    border: 1px solid #2a3a5e;
+    color: #c0c8d0;
+  }
+  .flow-node.choice {
+    background: linear-gradient(135deg, #3a1a2a, #2a1020);
+    border: 2px solid #e94560;
+    color: #f0a0b0;
+    transform: rotate(0deg);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    padding: 30px 40px;
+  }
+  .flow-node.outcome-good {
+    background: linear-gradient(135deg, #1a3a1a, #0a2a0a);
+    border: 1px solid #4CAF50;
+    color: #a0d0a0;
+  }
+  .flow-node.outcome-bad {
+    background: linear-gradient(135deg, #3a1a1a, #2a0a0a);
+    border: 1px solid #e94560;
+    color: #d0a0a0;
+  }
+  .flow-node.learn {
+    background: linear-gradient(135deg, #2a2a1a, #1e1e0a);
+    border: 1px solid #FF9800;
+    color: #FFB74D;
+  }
+
+  .flow-arrow {
+    width: 2px;
+    height: 30px;
+    background: #2a3a5e;
+    position: relative;
+  }
+  .flow-arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #2a3a5e;
+    font-size: 0.6em;
+  }
+
+  .flow-branch {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .flow-branch::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: #2a3a5e;
+  }
+  .flow-branch-arm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .branch-label {
+    font-size: 0.7em;
+    color: #667;
+    margin-bottom: 8px;
+  }
+
+  /* Sections divider */
+  .section-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #2a3a5e;
+    margin: 40px 0;
+  }
+
+  /* Board sections */
+  .board-section {
+    display: none;
+  }
+  .board-section.active {
+    display: block;
+  }
+
+  /* Color palette */
+  .palette-section {
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .palette-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .palette-swatch {
+    width: 80px;
+    text-align: center;
+  }
+  .swatch-color {
+    width: 60px; height: 60px;
+    border-radius: 12px;
+    margin: 0 auto 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .swatch-label {
+    font-size: 0.65em;
+    color: #667;
+  }
+  .swatch-hex {
+    font-size: 0.6em;
+    color: #445;
+    font-family: monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>SAFE PASSAGE</h1>
+  <p>Visual Storyboard &amp; UI Concepts</p>
+</div>
+
+<div class="storyboard-nav">
+  <button class="active" onclick="showSection('screens')">Screen Mockups</button>
+  <button onclick="showSection('flow')">Story Flow</button>
+  <button onclick="showSection('palette')">Visual Identity</button>
+</div>
+
+<div class="board-container">
+
+  <!-- ==================== SCREEN MOCKUPS ==================== -->
+  <div id="section-screens" class="board-section active">
+
+    <!-- BOARD 1: Title Screen -->
+    <div class="scene-label">Board 1</div>
+    <h2 class="scene-title">Title Screen</h2>
+    <p class="scene-desc">Atmospheric SE Asian silhouette scene. Temple, trees, and small figures evoke the setting without being specific to one country. Warm-cool color tension hints at the story's duality.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-title-bg">
+              <div class="title-silhouettes">
+                <div class="silhouette sil-tree1"></div>
+                <div class="silhouette sil-temple"></div>
+                <div class="silhouette sil-tree2"></div>
+                <div class="silhouette sil-figure1"></div>
+                <div class="silhouette sil-figure2"></div>
+                <div class="silhouette sil-ground"></div>
+              </div>
+              <div class="game-title">Safe Passage</div>
+              <div class="game-subtitle">Choose Your Path</div>
+              <div class="title-buttons">
+                <button class="btn-play">BEGIN</button>
+                <button class="btn-lang">🌐 ภาษาไทย ▾</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Language selector supports Thai, Khmer, Burmese, Vietnamese, Bahasa, Tagalog, English</p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BOARD 2: Character Selection -->
+    <div class="scene-label">Board 2</div>
+    <h2 class="scene-title">Character Selection</h2>
+    <p class="scene-desc">Four characters representing different trafficking scenarios across the region. Each story teaches different red flags and safety strategies. Players can replay all four.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-charsel">
+              <div class="charsel-title">Choose Your Story</div>
+              <h2 class="charsel-heading">Whose Journey Will You Follow?</h2>
+
+              <div class="char-card selected">
+                <div class="char-avatar mali">👩</div>
+                <div class="char-info">
+                  <h3>Mali</h3>
+                  <div class="char-age">17 · Rural Thailand</div>
+                  <div class="char-desc">Offered a "restaurant job" in the city by a family friend. Dreams of earning money for her family.</div>
+                  <span class="char-tag">Labor Trafficking</span>
+                </div>
+              </div>
+
+              <div class="char-card">
+                <div class="char-avatar somchai">👨</div>
+                <div class="char-info">
+                  <h3>Somchai</h3>
+                  <div class="char-age">22 · Phnom Penh, Cambodia</div>
+                  <div class="char-desc">Sees an online ad for high-paying IT work across the border. The salary seems too good to pass up.</div>
+                  <span class="char-tag">Scam Compound</span>
+                </div>
+              </div>
+
+              <div class="char-card">
+                <div class="char-avatar rina">👩</div>
+                <div class="char-info">
+                  <h3>Rina</h3>
+                  <div class="char-age">15 · Jakarta, Indonesia</div>
+                  <div class="char-desc">A kind older woman offers to sponsor her education in another city if she helps with "housework."</div>
+                  <span class="char-tag">Domestic Servitude</span>
+                </div>
+              </div>
+
+              <div class="char-card">
+                <div class="char-avatar anh">👨</div>
+                <div class="char-info">
+                  <h3>Anh</h3>
+                  <div class="char-age">19 · Hai Phong, Vietnam</div>
+                  <div class="char-desc">Recruited for a fishing boat job overseas. Promised good wages and adventure on the open sea.</div>
+                  <span class="char-tag">Forced Labor at Sea</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Each character addresses a different real trafficking pattern in SE Asia</p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BOARD 3: Story Scene -->
+    <div class="scene-label">Board 3</div>
+    <h2 class="scene-title">Story Scene — Village Market</h2>
+    <p class="scene-desc">Mali's story opens at a familiar village market. The art style is warm and inviting — this is home. A well-dressed stranger approaches with an opportunity. The dialogue box overlays the scene art.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-story">
+              <div class="story-scene-art scene-market">
+                <div class="market-sun"></div>
+                <div class="market-clouds"></div>
+                <div class="market-stall stall1"></div>
+                <div class="market-stall stall2"></div>
+                <div class="market-ground"></div>
+                <div class="market-figure-mali">
+                  <div class="fig-head"></div>
+                  <div class="fig-body"></div>
+                  <div class="fig-legs"><div class="fig-leg"></div><div class="fig-leg"></div></div>
+                </div>
+                <div class="market-stranger">
+                  <div class="fig-head"></div>
+                  <div class="stranger-body"></div>
+                  <div class="fig-legs"><div class="fig-leg"></div><div class="fig-leg"></div></div>
+                </div>
+              </div>
+              <div class="story-dialogue-box">
+                <div class="dialogue-speaker">
+                  <span class="speaker-dot"></span>
+                  <span class="speaker-name">Khun Prasert</span>
+                </div>
+                <div class="dialogue-text">
+                  "Mali! Your mother told me you finished school. I run a restaurant in Bangkok — good tips, free room and board. You could send money home every month."
+                </div>
+                <div class="dialogue-indicator">
+                  <span class="dot-ind active"></span>
+                  <span class="dot-ind"></span>
+                  <span class="dot-ind"></span>
+                  <span class="dot-ind"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Scene art + dialogue overlay. Tap to advance text. Dots show dialogue progress.</p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BOARD 4: Choice Point -->
+    <div class="scene-label">Board 4</div>
+    <h2 class="scene-title">Critical Choice Point</h2>
+    <p class="scene-desc">The core mechanic: player faces a branching decision. Color-coded options (green = safer, red = riskier, blue = neutral) give subtle guidance without being preachy. Each choice leads to different story outcomes.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-choice">
+              <div class="choice-scene-art">
+                <div class="phone-prop">
+                  <div class="phone-glow">NEW<br>MSG</div>
+                </div>
+                <div class="thought-bubbles">
+                  <div class="thought-b"></div>
+                  <div class="thought-b"></div>
+                  <div class="thought-b"></div>
+                </div>
+              </div>
+              <div class="choice-section">
+                <div class="choice-prompt">Khun Prasert wants you to leave tomorrow. He says the job won't wait. What do you do?</div>
+                <div class="choice-subtext">Your choice will shape Mali's future</div>
+
+                <button class="choice-btn choice-safe">
+                  <span class="choice-icon">🛡️</span>
+                  "I need to talk to my mother first and see the job contract before I decide."
+                </button>
+
+                <button class="choice-btn choice-risky">
+                  <span class="choice-icon">⚡</span>
+                  "Okay, I'll pack tonight. This is my chance to help my family!"
+                </button>
+
+                <button class="choice-btn choice-neutral">
+                  <span class="choice-icon">🔍</span>
+                  "Can I call someone who works at your restaurant to ask about it?"
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Color-coded choices: green = protective action, red = risky, blue = investigative</p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BOARD 5A: Red Flag Consequence -->
+    <div class="scene-label">Board 5A</div>
+    <h2 class="scene-title">Consequence — Red Flag Warning</h2>
+    <p class="scene-desc">When the player makes a risky choice, the game doesn't punish — it educates. A narrative consequence plays out, followed by a "Red Flag" card explaining the real-world danger signal the player missed.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-consequence">
+              <div class="consequence-banner warning">
+                <div class="banner-icon">⚠️</div>
+                <div class="banner-label">Red Flag Detected</div>
+              </div>
+              <div class="consequence-narrative">
+                <p>Mali packs quickly and leaves with Khun Prasert the next morning. On the bus, he takes her ID card "for safekeeping."</p>
+                <p>When they arrive, it's not a restaurant — it's a karaoke bar. There are other young women here. The doors have locks on the outside.</p>
+                <p>Mali realizes she doesn't know anyone in this city. She has no phone, no ID, and no money.</p>
+              </div>
+              <div class="redflag-card">
+                <div class="redflag-header">
+                  <span class="redflag-icon">🚩</span>
+                  <span class="redflag-title">Real-World Red Flags</span>
+                </div>
+                <div class="redflag-text">
+                  <strong>Urgency pressure</strong> — "Leave tomorrow or lose the chance" prevents you from verifying.<br><br>
+                  <strong>Taking documents</strong> — A legitimate employer never needs to hold your ID.<br><br>
+                  <strong>No written contract</strong> — Real jobs have written terms you can review first.
+                </div>
+              </div>
+              <button class="continue-btn">↩ Go Back &amp; Choose Again</button>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Player can rewind and try a safer choice — learning through consequence, not failure</p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BOARD 5B: Safe Choice -->
+    <div class="scene-label">Board 5B</div>
+    <h2 class="scene-title">Consequence — Safe Choice</h2>
+    <p class="scene-desc">Choosing wisely is rewarded with positive narrative progress and reinforcement of the protective behavior.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-consequence">
+              <div class="consequence-banner safe">
+                <div class="banner-icon">✅</div>
+                <div class="banner-label safe-text">Smart Move</div>
+              </div>
+              <div class="consequence-narrative">
+                <p>Mali tells Khun Prasert she needs to talk to her mother first. He seems annoyed but agrees to wait.</p>
+                <p>That evening, Mali's mother calls a relative in Bangkok who checks — there is no restaurant registered under Prasert's name. The relative warns them to be careful.</p>
+                <p>Mali's instinct to verify saved her from a dangerous situation.</p>
+              </div>
+              <div class="safeflag-card">
+                <div class="safeflag-header">
+                  <span class="redflag-icon">🛡️</span>
+                  <span class="safeflag-title">What You Did Right</span>
+                </div>
+                <div class="safeflag-text">
+                  ✓ <strong>Told a trusted adult</strong> before making a big decision<br><br>
+                  ✓ <strong>Asked to verify</strong> the opportunity independently<br><br>
+                  ✓ <strong>Didn't rush</strong> despite pressure
+                </div>
+              </div>
+              <button class="continue-btn">Continue Mali's Story →</button>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Positive reinforcement explains WHY the choice was protective</p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BOARD 6: Journey Map -->
+    <div class="scene-label">Board 6</div>
+    <h2 class="scene-title">Journey Map &amp; Progress</h2>
+    <p class="scene-desc">Between chapters, players see their progress. An "Awareness Score" tracks learning. Badges reward completing safety knowledge. Past choices are visible — even mistakes become learning moments.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-map">
+              <div class="map-header">
+                <h3>Mali's Journey</h3>
+                <span class="chapter-badge">Chapter 2 of 5</span>
+              </div>
+
+              <div class="journey-line">
+                <div class="journey-node completed">
+                  <div class="node-dot done"></div>
+                  <div class="node-title">The Market</div>
+                  <div class="node-subtitle">A stranger's offer</div>
+                  <div class="node-choice-made">✓ Asked mother first</div>
+                </div>
+
+                <div class="journey-node completed">
+                  <div class="node-dot done"></div>
+                  <div class="node-title">The Phone Call</div>
+                  <div class="node-subtitle">Verifying the opportunity</div>
+                  <div class="node-choice-made bad">✗ Shared location online</div>
+                </div>
+
+                <div class="journey-node current">
+                  <div class="node-dot active"></div>
+                  <div class="node-title">The Bus Station</div>
+                  <div class="node-subtitle">A new offer arrives...</div>
+                </div>
+
+                <div class="journey-node locked">
+                  <div class="node-dot"></div>
+                  <div class="node-title">The City</div>
+                  <div class="node-subtitle">???</div>
+                </div>
+
+                <div class="journey-node locked">
+                  <div class="node-dot"></div>
+                  <div class="node-title">The Choice</div>
+                  <div class="node-subtitle">???</div>
+                </div>
+              </div>
+
+              <div class="awareness-meter">
+                <div class="meter-label">
+                  <span>Awareness Score</span>
+                  <span>45%</span>
+                </div>
+                <div class="meter-bar">
+                  <div class="meter-fill"></div>
+                </div>
+                <div class="meter-badges">
+                  <span class="badge">🛡️ Verifier</span>
+                  <span class="badge locked">🔒 ???</span>
+                  <span class="badge locked">🔒 ???</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Progress tracking with awareness score and collectible safety badges</p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- BOARD 7: Safe Ending -->
+    <div class="scene-label">Board 7</div>
+    <h2 class="scene-title">Story Completion — Safe Ending</h2>
+    <p class="scene-desc">Completing a character's story shows a summary with real-world helpline information. The share button lets players spread the game to friends — the primary distribution mechanism.</p>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="screen-ending ending-safe">
+              <div class="ending-art">
+                <div class="ending-particles">
+                  <div class="particle"></div>
+                  <div class="particle"></div>
+                  <div class="particle"></div>
+                  <div class="particle"></div>
+                  <div class="particle"></div>
+                </div>
+                <div class="ending-glow">🏡</div>
+              </div>
+              <div class="ending-content">
+                <h3>Mali Is Safe</h3>
+                <p>By verifying opportunities, trusting her instincts, and staying connected to her family, Mali avoided a dangerous situation and found a legitimate job through a verified agency.</p>
+                <div class="ending-stats">
+                  <div class="stat-box">
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">Red Flags<br>Learned</div>
+                  </div>
+                  <div class="stat-box">
+                    <div class="stat-num">3</div>
+                    <div class="stat-label">Safe Choices<br>Made</div>
+                  </div>
+                  <div class="stat-box">
+                    <div class="stat-num">85%</div>
+                    <div class="stat-label">Awareness<br>Score</div>
+                  </div>
+                </div>
+                <button class="share-btn">📤 Share With a Friend</button>
+              </div>
+              <div class="helpline-footer">
+                If you or someone you know needs help:<br>
+                <strong>Thailand: 1300</strong> · <strong>Cambodia: 1288</strong> · <strong>Philippines: 1343</strong><br>
+                <strong>Global: IOM +41 22 717 9111</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="phone-caption">Real helpline numbers and share mechanic for organic distribution</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== STORY FLOW ==================== -->
+  <div id="section-flow" class="board-section">
+    <div class="flow-section">
+      <h2 class="flow-title">Story Branching Structure</h2>
+      <p class="flow-subtitle">Mali's story — 5 chapters, 3 possible endings</p>
+
+      <div class="flow-diagram">
+        <div class="flow-node start">🎬 The Market<br><small>Mali meets Khun Prasert</small></div>
+        <div class="flow-arrow"></div>
+        <div style="background:#3a1a2a;border:2px solid #e94560;color:#f0a0b0;padding:14px 28px;border-radius:50%;text-align:center;font-size:0.82em;">CHOICE<br><small>Leave tomorrow?</small></div>
+        <div class="flow-arrow"></div>
+
+        <div class="flow-branch">
+          <div class="flow-branch-arm">
+            <span class="branch-label">🛡️ Tell mother</span>
+            <div class="flow-node outcome-good">Mother verifies → scam revealed</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node scene">Ch2: The Phone Call<br><small>New online offer appears</small></div>
+            <div class="flow-arrow"></div>
+            <div style="background:#3a1a2a;border:2px solid #e94560;color:#f0a0b0;padding:14px 28px;border-radius:50%;text-align:center;font-size:0.82em;">CHOICE</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node outcome-good" style="max-width:180px">→ Verified agency<br>→ Safe job<br>→ Sends money home<br><small>🏆 Best Ending</small></div>
+          </div>
+
+          <div class="flow-branch-arm">
+            <span class="branch-label">⚡ Leave immediately</span>
+            <div class="flow-node outcome-bad">Arrives at karaoke bar, ID taken</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node learn">🚩 Red Flag Card<br><small>Urgency, ID confiscation</small></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node scene">↩ Rewind point<br><small>Try again with knowledge</small></div>
+          </div>
+
+          <div class="flow-branch-arm">
+            <span class="branch-label">🔍 Ask for reference</span>
+            <div class="flow-node outcome-good">Prasert can't provide one → reveals lie</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node scene">Ch2: Alternative path<br><small>Mali seeks help from school</small></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node outcome-good" style="max-width:180px">→ Counselor connects to NGO<br>→ Skills training<br><small>✨ Growth Ending</small></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <h2 class="flow-title">All Four Story Arcs</h2>
+      <p class="flow-subtitle">Each addresses a different trafficking pattern</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
+        <div style="background:rgba(233,69,96,0.05);border:1px solid #4a2a3a;border-radius:12px;padding:16px;">
+          <div style="font-size:1.5em;margin-bottom:6px;">👩 Mali</div>
+          <div style="font-size:0.9em;font-weight:600;margin-bottom:4px;">Labor Trafficking</div>
+          <div style="font-size:0.75em;color:#889;line-height:1.5;">Fake restaurant job → karaoke bar. Teaches: urgency pressure, ID confiscation, contract verification, trusted adult consultation.</div>
+          <div style="font-size:0.7em;color:#e94560;margin-top:8px;">5 chapters · 3 endings</div>
+        </div>
+        <div style="background:rgba(58,123,213,0.05);border:1px solid #2a3a5e;border-radius:12px;padding:16px;">
+          <div style="font-size:1.5em;margin-bottom:6px;">👨 Somchai</div>
+          <div style="font-size:0.9em;font-weight:600;margin-bottom:4px;">Scam Compound</div>
+          <div style="font-size:0.75em;color:#889;line-height:1.5;">Online "IT job" ad → cross-border compound. Teaches: too-good-to-be-true offers, border crossing dangers, online recruitment tactics.</div>
+          <div style="font-size:0.7em;color:#3a7bd5;margin-top:8px;">5 chapters · 3 endings</div>
+        </div>
+        <div style="background:rgba(139,92,246,0.05);border:1px solid #3a2a5a;border-radius:12px;padding:16px;">
+          <div style="font-size:1.5em;margin-bottom:6px;">👩 Rina</div>
+          <div style="font-size:0.9em;font-weight:600;margin-bottom:4px;">Domestic Servitude</div>
+          <div style="font-size:0.75em;color:#889;line-height:1.5;">Education sponsorship offer → forced housework. Teaches: grooming by trusted figures, isolation tactics, debt bondage.</div>
+          <div style="font-size:0.7em;color:#8b5cf6;margin-top:8px;">5 chapters · 3 endings</div>
+        </div>
+        <div style="background:rgba(245,158,11,0.05);border:1px solid #4a3a1a;border-radius:12px;padding:16px;">
+          <div style="font-size:1.5em;margin-bottom:6px;">👨 Anh</div>
+          <div style="font-size:0.9em;font-weight:600;margin-bottom:4px;">Forced Labor at Sea</div>
+          <div style="font-size:0.75em;color:#889;line-height:1.5;">Fishing boat recruitment → trapped at sea. Teaches: bait-and-switch wages, passport confiscation, no-escape situations.</div>
+          <div style="font-size:0.7em;color:#f59e0b;margin-top:8px;">5 chapters · 3 endings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== VISUAL IDENTITY ==================== -->
+  <div id="section-palette" class="board-section">
+    <div class="palette-section">
+      <h2 class="flow-title">Visual Identity</h2>
+      <p class="flow-subtitle">Color palette, art direction, and design principles</p>
+
+      <h3 style="font-size:0.9em;color:#e94560;text-transform:uppercase;letter-spacing:2px;margin-top:30px;margin-bottom:12px;text-align:center;">Core Palette</h3>
+      <div class="palette-row">
+        <div class="palette-swatch">
+          <div class="swatch-color" style="background:#e94560;"></div>
+          <div class="swatch-label">Danger / CTA</div>
+          <div class="swatch-hex">#E94560</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="swatch-color" style="background:#4CAF50;"></div>
+          <div class="swatch-label">Safety / Success</div>
+          <div class="swatch-hex">#4CAF50</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="swatch-color" style="background:#FF9800;"></div>
+          <div class="swatch-label">Caution / Alert</div>
+          <div class="swatch-hex">#FF9800</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="swatch-color" style="background:#3a7bd5;"></div>
+          <div class="swatch-label">Info / Neutral</div>
+          <div class="swatch-hex">#3A7BD5</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="swatch-color" style="background:#1a1a2e;"></div>
+          <div class="swatch-label">Background</div>
+          <div class="swatch-hex">#1A1A2E</div>
+        </div>
+        <div class="palette-swatch">
+          <div class="swatch-color" style="background:#16213e;"></div>
+          <div class="swatch-label">Surface</div>
+          <div class="swatch-hex">#16213E</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:0.9em;color:#e94560;text-transform:uppercase;letter-spacing:2px;margin-top:40px;margin-bottom:16px;text-align:center;">Art Direction</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid #2a3a5e;border-radius:12px;padding:20px;">
+          <h4 style="font-size:0.85em;margin-bottom:8px;">🎨 Style: Flat Illustration</h4>
+          <p style="font-size:0.78em;color:#889;line-height:1.6;">Warm, approachable flat illustration with limited details. Similar to "Florence" or "Alto's Adventure." Avoids photorealism to prevent triggering trauma. Silhouettes and color convey mood.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid #2a3a5e;border-radius:12px;padding:20px;">
+          <h4 style="font-size:0.85em;margin-bottom:8px;">🌏 Setting: Pan-SE Asian</h4>
+          <p style="font-size:0.78em;color:#889;line-height:1.6;">Architecture and clothing reference real SE Asian cultures but avoid stereotyping any one country. Temple silhouettes, tropical vegetation, market stalls, and monsoon skies establish location.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid #2a3a5e;border-radius:12px;padding:20px;">
+          <h4 style="font-size:0.85em;margin-bottom:8px;">💡 Light as Metaphor</h4>
+          <p style="font-size:0.78em;color:#889;line-height:1.6;">Warm golden light = safety, home, truth. Cool blue/purple = uncertainty, danger, deception. Red accents = immediate threat, urgency. Green = safe choices, positive outcomes.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid #2a3a5e;border-radius:12px;padding:20px;">
+          <h4 style="font-size:0.85em;margin-bottom:8px;">📱 Mobile-First Layout</h4>
+          <p style="font-size:0.78em;color:#889;line-height:1.6;">Top 55% = scene art (visual storytelling). Bottom 45% = dialogue/choices (interaction). One-thumb navigation. Large tap targets (48px min). Text scales for accessibility. RTL-ready layout.</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:0.9em;color:#e94560;text-transform:uppercase;letter-spacing:2px;margin-top:40px;margin-bottom:16px;text-align:center;">Design Principles</h3>
+      <div style="max-width:600px;margin:0 auto;">
+        <div style="padding:12px 0;border-bottom:1px solid #2a3a5e;display:flex;gap:12px;align-items:baseline;">
+          <span style="color:#e94560;font-weight:700;">01</span>
+          <div>
+            <div style="font-size:0.85em;font-weight:600;">Educate, don't traumatize</div>
+            <div style="font-size:0.75em;color:#667;margin-top:2px;">Show consequences without graphic content. Use implication and emotion, not shock.</div>
+          </div>
+        </div>
+        <div style="padding:12px 0;border-bottom:1px solid #2a3a5e;display:flex;gap:12px;align-items:baseline;">
+          <span style="color:#e94560;font-weight:700;">02</span>
+          <div>
+            <div style="font-size:0.85em;font-weight:600;">Agency over helplessness</div>
+            <div style="font-size:0.75em;color:#667;margin-top:2px;">Players always have a path to safety. Rewind mechanics mean no permanent failure states.</div>
+          </div>
+        </div>
+        <div style="padding:12px 0;border-bottom:1px solid #2a3a5e;display:flex;gap:12px;align-items:baseline;">
+          <span style="color:#e94560;font-weight:700;">03</span>
+          <div>
+            <div style="font-size:0.85em;font-weight:600;">Respect, not rescue narratives</div>
+            <div style="font-size:0.75em;color:#667;margin-top:2px;">Characters are smart people in difficult situations — not victims to be saved. Choices reflect real agency.</div>
+          </div>
+        </div>
+        <div style="padding:12px 0;border-bottom:1px solid #2a3a5e;display:flex;gap:12px;align-items:baseline;">
+          <span style="color:#e94560;font-weight:700;">04</span>
+          <div>
+            <div style="font-size:0.85em;font-weight:600;">Culturally specific, universally accessible</div>
+            <div style="font-size:0.75em;color:#667;margin-top:2px;">Stories reflect real patterns in each country. UI works across literacy levels with visual cues.</div>
+          </div>
+        </div>
+        <div style="padding:12px 0;display:flex;gap:12px;align-items:baseline;">
+          <span style="color:#e94560;font-weight:700;">05</span>
+          <div>
+            <div style="font-size:0.85em;font-weight:600;">Offline-first, share-native</div>
+            <div style="font-size:0.75em;color:#667;margin-top:2px;">Full gameplay without internet. Share button is a core feature, not an afterthought.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showSection(name) {
+  document.querySelectorAll('.board-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  document.querySelectorAll('.storyboard-nav button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
