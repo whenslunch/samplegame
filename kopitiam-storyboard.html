@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kopitiam — Visual Mockups</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&family=Playfair+Display:wght@700&family=Caveat:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1310;
+    color: #eee;
+    font-family: 'Noto Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ===== PAGE HEADER ===== */
+  .page-header {
+    text-align: center;
+    padding: 50px 20px 30px;
+    background: linear-gradient(180deg, #2c1e14 0%, #1a1310 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='60' height='60' fill='none'/%3E%3Ccircle cx='30' cy='30' r='1' fill='%23ffffff08'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    color: #F5DEB3;
+    letter-spacing: 4px;
+    position: relative;
+    text-shadow: 0 2px 10px rgba(139,90,43,0.5);
+  }
+  .page-header .zhongwen {
+    font-size: 1.2em;
+    color: #c4956a;
+    margin-top: 4px;
+    letter-spacing: 8px;
+    position: relative;
+  }
+  .page-header p {
+    color: #8B7355;
+    margin-top: 8px;
+    font-size: 0.95em;
+    position: relative;
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    background: #1e1612;
+    border-bottom: 1px solid #3a2a1e;
+    flex-wrap: wrap;
+  }
+  .nav button {
+    background: #2c1e14;
+    color: #8B7355;
+    border: 1px solid #3a2a1e;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.3s;
+  }
+  .nav button.active, .nav button:hover {
+    background: #8B4513;
+    color: #F5DEB3;
+    border-color: #8B4513;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .scene-label {
+    text-align: center;
+    font-size: 0.8em;
+    color: #8B4513;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .scene-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    color: #F5DEB3;
+    margin-bottom: 6px;
+  }
+  .scene-desc {
+    text-align: center;
+    color: #8B7355;
+    margin-bottom: 30px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+    font-size: 0.9em;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #2c1e14;
+    margin: 50px 0;
+  }
+
+  /* ===== PHONE FRAME ===== */
+  .phone-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  .phone-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .phone {
+    width: 320px;
+    background: #111;
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 0 0 2px #2a2a2a;
+  }
+  .notch {
+    width: 100px;
+    height: 22px;
+    background: #111;
+    border-radius: 0 0 14px 14px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .screen {
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 560px;
+    position: relative;
+  }
+  .phone-caption {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 0.78em;
+    color: #5a4a3a;
+    max-width: 320px;
+  }
+
+  /* ===== TITLE SCREEN ===== */
+  .scr-title {
+    background: linear-gradient(180deg, #1a0e08 0%, #2c1a10 30%, #3a2215 60%, #2c1a10 100%);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Ceiling fan */
+  .ceiling-fan {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+  }
+  .fan-rod {
+    width: 2px;
+    height: 20px;
+    background: #555;
+    margin: 0 auto;
+  }
+  .fan-hub {
+    width: 12px;
+    height: 12px;
+    background: #666;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  .fan-blades {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: -6px auto 0;
+    animation: spin 4s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .fan-blade {
+    position: absolute;
+    width: 30px;
+    height: 8px;
+    background: rgba(100,80,60,0.4);
+    border-radius: 4px;
+    top: 50%;
+    left: 50%;
+  }
+  .fan-blade:nth-child(1) { transform: translate(-50%,-50%) rotate(0deg) translateX(10px); }
+  .fan-blade:nth-child(2) { transform: translate(-50%,-50%) rotate(90deg) translateX(10px); }
+  .fan-blade:nth-child(3) { transform: translate(-50%,-50%) rotate(180deg) translateX(10px); }
+  .fan-blade:nth-child(4) { transform: translate(-50%,-50%) rotate(270deg) translateX(10px); }
+
+  /* Hanging lights */
+  .hanging-light {
+    position: absolute;
+    top: 0;
+  }
+  .light-wire {
+    width: 1px;
+    height: 40px;
+    background: #444;
+    margin: 0 auto;
+  }
+  .light-shade {
+    width: 36px;
+    height: 20px;
+    border-radius: 0 0 50% 50%;
+    margin: 0 auto;
+  }
+  .light-glow {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: -10px auto 0;
+    filter: blur(15px);
+  }
+  .hl-left { left: 40px; }
+  .hl-left .light-shade { background: #8B4513; }
+  .hl-left .light-glow { background: rgba(255,180,80,0.15); }
+  .hl-right { right: 40px; }
+  .hl-right .light-shade { background: #A0522D; }
+  .hl-right .light-glow { background: rgba(255,160,60,0.12); }
+
+  /* Stall counter */
+  .stall-counter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+  }
+  .counter-top {
+    height: 8px;
+    background: linear-gradient(90deg, #8B7355, #A0845C, #8B7355);
+    box-shadow: 0 -2px 10px rgba(139,115,85,0.3);
+  }
+  .counter-body {
+    height: 152px;
+    background: linear-gradient(180deg, #3a2a1e, #2c1e14);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 15px;
+    gap: 12px;
+    position: relative;
+  }
+
+  /* Items on counter */
+  .condensed-can {
+    width: 22px;
+    height: 32px;
+    background: linear-gradient(180deg, #ddd, #f5f5dc, #ddd);
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  .condensed-can::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 3px; right: 3px;
+    height: 14px;
+    background: linear-gradient(180deg, #C41E3A, #8B0000);
+    border-radius: 1px;
+  }
+  .condensed-can::after {
+    content: '';
+    position: absolute;
+    top: -3px; left: 50%;
+    transform: translateX(-50%);
+    width: 4px; height: 3px;
+    background: #999;
+    border-radius: 1px 1px 0 0;
+  }
+
+  .cup-rack {
+    display: flex;
+    gap: 3px;
+  }
+  .mini-cup {
+    width: 12px;
+    height: 14px;
+    background: linear-gradient(180deg, #f5f5dc, #ddd);
+    border-radius: 0 0 3px 3px;
+    border-top: 2px solid #ccc;
+  }
+
+  .sock-filter {
+    width: 18px;
+    height: 40px;
+    position: relative;
+  }
+  .sock-handle {
+    width: 3px;
+    height: 18px;
+    background: #8B7355;
+    margin: 0 auto;
+  }
+  .sock-ring {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #8B7355;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  .sock-cloth {
+    width: 14px;
+    height: 16px;
+    background: #8B6914;
+    border-radius: 0 0 7px 7px;
+    margin: -4px auto 0;
+    opacity: 0.8;
+  }
+
+  /* Title text */
+  .game-logo {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .game-logo h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6em;
+    color: #F5DEB3;
+    text-shadow: 0 0 30px rgba(139,90,43,0.4), 0 3px 6px rgba(0,0,0,0.5);
+    letter-spacing: 3px;
+  }
+  .game-logo .cn-sub {
+    font-size: 1em;
+    color: #c4956a;
+    letter-spacing: 6px;
+    margin-top: 2px;
+  }
+  .game-logo .tagline {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1em;
+    color: #8B7355;
+    margin-top: 8px;
+  }
+
+  .title-btns {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .btn-start {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: #F5DEB3;
+    border: none;
+    padding: 14px 50px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(139,69,19,0.5);
+  }
+  .btn-cont {
+    background: transparent;
+    color: #8B7355;
+    border: 1px solid #3a2a1e;
+    padding: 8px 30px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    cursor: pointer;
+  }
+
+  /* ===== WORKSTATION SCREEN ===== */
+  .scr-work {
+    background: linear-gradient(180deg, #1a0e08, #2c1a10);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Order queue */
+  .order-queue {
+    background: linear-gradient(180deg, #1a0e08, #221510);
+    padding: 8px 10px;
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+    border-bottom: 2px solid #3a2a1e;
+  }
+  .order-ticket {
+    flex-shrink: 0;
+    background: #F5F5DC;
+    color: #2c1a10;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 0.72em;
+    font-weight: 600;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    min-width: 80px;
+  }
+  .order-ticket::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px 2px 0 0;
+  }
+  .ticket-timer {
+    height: 3px;
+    background: #ddd;
+    border-radius: 2px;
+    margin-top: 4px;
+    overflow: hidden;
+  }
+  .timer-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+  .timer-fill.green { background: #4CAF50; width: 80%; }
+  .timer-fill.yellow { background: #FF9800; width: 50%; }
+  .timer-fill.red { background: #e74c3c; width: 20%; }
+
+  .ticket-active {
+    border: 2px solid #8B4513;
+    box-shadow: 0 0 10px rgba(139,69,19,0.3);
+  }
+  .ticket-cust {
+    font-size: 0.85em;
+    color: #8B7355;
+    font-weight: 400;
+  }
+
+  /* Score bar */
+  .score-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background: rgba(0,0,0,0.3);
+    font-size: 0.7em;
+  }
+  .score-val {
+    color: #F5DEB3;
+    font-weight: 700;
+  }
+  .streak-badge {
+    background: rgba(139,69,19,0.3);
+    color: #DEB887;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 0.9em;
+  }
+  .lives {
+    color: #e74c3c;
+    letter-spacing: 2px;
+  }
+
+  /* Workspace area */
+  .workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+  }
+
+  /* Marble table texture */
+  .marble-surface {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(200,180,160,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(180,160,140,0.04) 0%, transparent 50%),
+      linear-gradient(180deg, #2c1a10, #3a2820, #2c1a10);
+    opacity: 0.8;
+  }
+  .marble-veins {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(35deg, transparent 40%, rgba(200,180,160,0.03) 41%, rgba(200,180,160,0.03) 41.5%, transparent 42%),
+      linear-gradient(125deg, transparent 55%, rgba(200,180,160,0.02) 55.5%, rgba(200,180,160,0.02) 56%, transparent 56.5%),
+      linear-gradient(75deg, transparent 30%, rgba(180,160,140,0.03) 30.5%, rgba(180,160,140,0.03) 31%, transparent 31.5%);
+  }
+
+  /* Cup in workspace */
+  .ws-cup-area {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ws-label {
+    font-size: 0.65em;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .ws-cup {
+    width: 80px;
+    height: 90px;
+    background: linear-gradient(180deg, rgba(245,245,220,0.9), rgba(220,210,190,0.9));
+    border-radius: 4px 4px 12px 12px;
+    border: 2px solid rgba(200,190,170,0.6);
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  .ws-cup-handle {
+    position: absolute;
+    right: -16px;
+    top: 20px;
+    width: 16px;
+    height: 30px;
+    border: 3px solid rgba(200,190,170,0.6);
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+  }
+
+  /* Liquid in cup */
+  .cup-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 10px 10px;
+  }
+  .liquid-kopi {
+    height: 55%;
+    background: linear-gradient(180deg, #3a1e0a, #2c1608);
+  }
+  .liquid-teh {
+    height: 55%;
+    background: linear-gradient(180deg, #8B4513, #6B3410);
+  }
+  .liquid-milk-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 20%;
+    background: linear-gradient(180deg, rgba(255,248,220,0.4), #FFEFD5);
+    border-radius: 0 0 10px 10px;
+  }
+  .cup-steam {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .steam-line {
+    width: 2px;
+    height: 15px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    display: inline-block;
+    margin: 0 4px;
+    animation: steam 2s ease-in-out infinite;
+  }
+  .steam-line:nth-child(2) { animation-delay: 0.5s; height: 20px; }
+  .steam-line:nth-child(3) { animation-delay: 1s; }
+  @keyframes steam {
+    0%, 100% { transform: translateY(0) scaleX(1); opacity: 0.3; }
+    50% { transform: translateY(-8px) scaleX(1.5); opacity: 0; }
+  }
+
+  /* Tall glass for iced */
+  .ws-glass {
+    width: 65px;
+    height: 110px;
+    background: linear-gradient(180deg, rgba(200,220,240,0.15), rgba(200,220,240,0.08));
+    border: 2px solid rgba(200,220,240,0.2);
+    border-radius: 2px 2px 6px 6px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  .glass-ice {
+    position: absolute;
+    background: rgba(200,230,255,0.3);
+    border: 1px solid rgba(200,230,255,0.2);
+    border-radius: 3px;
+  }
+  .ice1 { width: 16px; height: 14px; top: 15px; left: 8px; transform: rotate(10deg); }
+  .ice2 { width: 14px; height: 12px; top: 12px; right: 8px; transform: rotate(-15deg); }
+  .ice3 { width: 15px; height: 13px; top: 30px; left: 20px; transform: rotate(5deg); }
+  .glass-liquid {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 70%;
+    background: linear-gradient(180deg, rgba(90,50,20,0.8), rgba(60,30,10,0.9));
+    border-radius: 0 0 4px 4px;
+  }
+  .glass-straw {
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    width: 4px;
+    height: 80px;
+    background: linear-gradient(180deg, #e74c3c, #c0392b);
+    border-radius: 2px;
+    transform: rotate(8deg);
+  }
+
+  /* Ingredient tray */
+  .ingredient-tray {
+    background: linear-gradient(180deg, #2c1e14, #221510);
+    border-top: 2px solid #3a2a1e;
+    padding: 10px 8px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+  }
+  .ing-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 4px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid #3a2a1e;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .ing-btn:hover, .ing-btn.active {
+    background: rgba(139,69,19,0.2);
+    border-color: #8B4513;
+    box-shadow: 0 0 10px rgba(139,69,19,0.15);
+  }
+  .ing-icon {
+    font-size: 1.4em;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+  }
+  .ing-label {
+    font-size: 0.55em;
+    color: #8B7355;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* ===== CUSTOMER SCREEN ===== */
+  .scr-customer {
+    background: linear-gradient(180deg, #2c1a10, #3a2518, #2c1a10);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cust-scene {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+  }
+
+  /* Customer character */
+  .customer-char {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .cust-head {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .uncle-head {
+    background: linear-gradient(180deg, #FFCC80, #FFB74D);
+  }
+  .uncle-hair {
+    position: absolute;
+    top: -2px; left: 5px; right: 5px;
+    height: 16px;
+    background: #555;
+    border-radius: 50% 50% 0 0;
+  }
+  .uncle-eyes {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  .uncle-eye {
+    width: 5px;
+    height: 5px;
+    background: #333;
+    border-radius: 50%;
+  }
+  .uncle-mouth {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 6px;
+    border-bottom: 2px solid #8B4513;
+    border-radius: 0 0 6px 6px;
+  }
+  .cust-body {
+    width: 60px;
+    height: 50px;
+    border-radius: 8px 8px 0 0;
+    margin-top: -4px;
+  }
+  .uncle-body { background: linear-gradient(180deg, #F5F5DC, #DCDCAA); }
+  .office-body { background: linear-gradient(180deg, #E0E0E0, #BDBDBD); }
+
+  /* Speech bubble */
+  .speech-bubble {
+    background: #F5F5DC;
+    color: #2c1a10;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-top: 16px;
+    position: relative;
+    max-width: 260px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .speech-bubble::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #F5F5DC;
+  }
+  .speech-order {
+    font-size: 1.1em;
+    color: #8B4513;
+    font-weight: 700;
+  }
+  .speech-flavor {
+    font-size: 0.78em;
+    color: #8B7355;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* Recipe decode panel */
+  .recipe-panel {
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid #3a2a1e;
+    padding: 14px 16px;
+  }
+  .recipe-title {
+    font-size: 0.7em;
+    color: #8B4513;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .recipe-steps {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .recipe-step {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(139,69,19,0.15);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.72em;
+    color: #DEB887;
+    border: 1px solid rgba(139,69,19,0.2);
+  }
+  .step-num {
+    background: #8B4513;
+    color: #F5DEB3;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .recipe-step.done {
+    background: rgba(76,175,80,0.15);
+    border-color: rgba(76,175,80,0.3);
+    color: #81C784;
+  }
+  .recipe-step.done .step-num {
+    background: #4CAF50;
+  }
+
+  /* ===== TEH TARIK MINI-GAME ===== */
+  .scr-tarik {
+    background: linear-gradient(180deg, #1a0e08, #2c1a10);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .tarik-header {
+    padding: 12px;
+    text-align: center;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid #3a2a1e;
+  }
+  .tarik-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+    color: #F5DEB3;
+  }
+  .tarik-sub {
+    font-size: 0.7em;
+    color: #8B7355;
+    margin-top: 2px;
+  }
+
+  .tarik-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+  }
+
+  .tarik-cups {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+  }
+  .tarik-cup {
+    width: 60px;
+    height: 70px;
+    background: linear-gradient(180deg, rgba(192,192,192,0.9), rgba(160,160,160,0.9));
+    border-radius: 4px 4px 10px 10px;
+    border: 2px solid rgba(180,180,180,0.6);
+    position: relative;
+    overflow: hidden;
+  }
+  .tarik-cup-top .cup-liquid {
+    height: 30%;
+    background: linear-gradient(180deg, #8B5A2B, #6B3A1B);
+  }
+  .tarik-cup-bottom .cup-liquid {
+    height: 80%;
+    background: linear-gradient(180deg, #8B5A2B, #6B3A1B);
+  }
+
+  .tarik-stream {
+    width: 6px;
+    height: 60px;
+    background: linear-gradient(180deg, #c49a6c, #8B5A2B);
+    border-radius: 3px;
+    opacity: 0.9;
+    animation: pour-wave 0.5s ease-in-out infinite alternate;
+  }
+  @keyframes pour-wave {
+    from { transform: scaleX(0.8); }
+    to { transform: scaleX(1.2); }
+  }
+
+  .tarik-meter {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 200px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    border: 1px solid #3a2a1e;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .tarik-meter-fill {
+    background: linear-gradient(180deg, #4CAF50, #8BC34A);
+    border-radius: 0 0 11px 11px;
+    height: 65%;
+    transition: height 0.3s;
+  }
+  .tarik-meter-label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6em;
+    color: #8B7355;
+    white-space: nowrap;
+  }
+  .tarik-zone-perfect {
+    position: absolute;
+    top: 20%;
+    left: 0; right: 0;
+    height: 15%;
+    background: rgba(76,175,80,0.2);
+    border-top: 1px dashed rgba(76,175,80,0.4);
+    border-bottom: 1px dashed rgba(76,175,80,0.4);
+  }
+
+  .tarik-instruction {
+    margin-top: 20px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1em;
+    color: #c4956a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .swipe-arrow {
+    font-size: 1.5em;
+    animation: swipe-anim 1s ease-in-out infinite alternate;
+  }
+  @keyframes swipe-anim {
+    from { transform: translateY(-5px); }
+    to { transform: translateY(5px); }
+  }
+
+  /* ===== RUSH HOUR ===== */
+  .scr-rush {
+    background: linear-gradient(180deg, #2c1a10, #3a2215);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rush-banner {
+    background: linear-gradient(90deg, #8B0000, #C41E3A, #8B0000);
+    text-align: center;
+    padding: 6px;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #FFD700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: rush-pulse 1s ease-in-out infinite alternate;
+  }
+  @keyframes rush-pulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; }
+  }
+
+  .rush-queue {
+    padding: 8px;
+    display: flex;
+    gap: 6px;
+    overflow: hidden;
+    border-bottom: 2px solid #3a2a1e;
+    background: rgba(0,0,0,0.3);
+  }
+  .rush-ticket {
+    flex-shrink: 0;
+    background: #F5F5DC;
+    color: #2c1a10;
+    padding: 5px 8px;
+    border-radius: 3px;
+    font-size: 0.65em;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .rush-workspace {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Crowd of waiting customers */
+  .rush-crowd {
+    position: absolute;
+    top: 10px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+  .crowd-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  .cd1 { background: #FFCC80; }
+  .cd2 { background: #BCAAA4; }
+  .cd3 { background: #FFE0B2; }
+  .cd4 { background: #D7CCC8; }
+  .cd5 { background: #FFCC80; }
+  .cd6 { background: #FFE0B2; }
+  .cd7 { background: #BCAAA4; }
+  .cd8 { background: #FFCC80; opacity: 0.4; }
+  .cd9 { background: #D7CCC8; opacity: 0.3; }
+
+  .rush-multiplier {
+    position: absolute;
+    bottom: 80px;
+    right: 16px;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #FFD700;
+    text-shadow: 0 0 20px rgba(255,215,0,0.4);
+  }
+
+  /* ===== SHIFT COMPLETE ===== */
+  .scr-complete {
+    background: linear-gradient(180deg, #1a0e08, #2c1a10, #1a0e08);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .complete-stars {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .star {
+    font-size: 2.2em;
+    animation: star-pop 0.5s ease-out;
+  }
+  .star.earned {
+    filter: drop-shadow(0 0 8px rgba(255,215,0,0.5));
+  }
+  .star:nth-child(2) { animation-delay: 0.2s; }
+  .star:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes star-pop {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  .complete-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    color: #F5DEB3;
+    margin-bottom: 4px;
+  }
+  .complete-shift {
+    font-size: 0.8em;
+    color: #8B7355;
+    margin-bottom: 24px;
+  }
+
+  .complete-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .cstat-num {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #DEB887;
+  }
+  .cstat-label {
+    font-size: 0.65em;
+    color: #8B7355;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  .complete-unlock {
+    background: rgba(139,69,19,0.15);
+    border: 1px dashed #8B4513;
+    border-radius: 12px;
+    padding: 12px 20px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .unlock-label {
+    font-size: 0.7em;
+    color: #8B4513;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .unlock-item {
+    font-size: 1em;
+    color: #F5DEB3;
+    font-weight: 600;
+  }
+  .unlock-desc {
+    font-size: 0.72em;
+    color: #8B7355;
+    margin-top: 2px;
+  }
+
+  .complete-btn {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: #F5DEB3;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(139,69,19,0.4);
+  }
+
+  /* ===== STALL UPGRADE ===== */
+  .scr-upgrade {
+    background: linear-gradient(180deg, #1a0e08, #221510);
+    min-height: 560px;
+    padding: 16px;
+  }
+  .upgrade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .upgrade-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+    color: #F5DEB3;
+  }
+  .coin-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,215,0,0.1);
+    padding: 4px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,215,0,0.2);
+    font-size: 0.85em;
+    color: #FFD700;
+    font-weight: 600;
+  }
+
+  .upgrade-card {
+    background: linear-gradient(135deg, #2c1e14, #221510);
+    border: 1px solid #3a2a1e;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .upgrade-card.purchased {
+    border-color: rgba(76,175,80,0.3);
+    background: linear-gradient(135deg, #1a2a1a, #152015);
+  }
+  .upgrade-icon {
+    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(139,69,19,0.15);
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .upgrade-info {
+    flex: 1;
+  }
+  .upgrade-name {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #F5DEB3;
+    margin-bottom: 2px;
+  }
+  .upgrade-desc {
+    font-size: 0.72em;
+    color: #8B7355;
+    line-height: 1.4;
+  }
+  .upgrade-price {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: #F5DEB3;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 14px;
+    font-size: 0.75em;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .upgrade-owned {
+    color: #4CAF50;
+    font-size: 0.75em;
+    font-weight: 600;
+  }
+
+  /* ===== COLOR PALETTE SECTION ===== */
+  .palette-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .pal-swatch {
+    text-align: center;
+    width: 90px;
+  }
+  .pal-color {
+    width: 70px;
+    height: 70px;
+    border-radius: 14px;
+    margin: 0 auto 6px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .pal-name {
+    font-size: 0.7em;
+    color: #8B7355;
+  }
+  .pal-hex {
+    font-size: 0.6em;
+    color: #5a4a3a;
+    font-family: monospace;
+  }
+
+  /* Art direction cards */
+  .art-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .art-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid #3a2a1e;
+    border-radius: 14px;
+    padding: 18px;
+  }
+  .art-card h4 {
+    font-size: 0.85em;
+    color: #F5DEB3;
+    margin-bottom: 6px;
+  }
+  .art-card p {
+    font-size: 0.75em;
+    color: #8B7355;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>KOPITIAM</h1>
+  <div class="zhongwen">咖啡店</div>
+  <p>Visual Mockups &amp; Ambience Guide</p>
+</div>
+
+<div class="nav">
+  <button class="active" onclick="show('screens')">Screen Mockups</button>
+  <button onclick="show('ambience')">Ambience &amp; Style</button>
+</div>
+
+<div class="container">
+
+<!-- ==================== SCREENS ==================== -->
+<div id="s-screens" class="section active">
+
+  <!-- 1: TITLE SCREEN -->
+  <div class="scene-label">Screen 1</div>
+  <h2 class="scene-title">Title Screen</h2>
+  <p class="scene-desc">Warm, dim kopitiam interior. Ceiling fan slowly spins overhead. Hanging pendant lights cast pools of amber. The counter displays the tools of the trade — sock filter, condensed milk cans, cup rack.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-title">
+            <!-- Ceiling fan -->
+            <div class="ceiling-fan">
+              <div class="fan-rod"></div>
+              <div class="fan-hub"></div>
+              <div class="fan-blades">
+                <div class="fan-blade"></div>
+                <div class="fan-blade"></div>
+                <div class="fan-blade"></div>
+                <div class="fan-blade"></div>
+              </div>
+            </div>
+
+            <!-- Hanging lights -->
+            <div class="hanging-light hl-left">
+              <div class="light-wire"></div>
+              <div class="light-shade"></div>
+              <div class="light-glow"></div>
+            </div>
+            <div class="hanging-light hl-right">
+              <div class="light-wire"></div>
+              <div class="light-shade"></div>
+              <div class="light-glow"></div>
+            </div>
+
+            <div class="game-logo">
+              <h2>Kopitiam</h2>
+              <div class="cn-sub">咖啡店</div>
+              <div class="tagline">One cup at a time, lah</div>
+            </div>
+
+            <div class="title-btns">
+              <button class="btn-start">START SHIFT</button>
+              <button class="btn-cont">Continue (Shift 12)</button>
+            </div>
+
+            <!-- Counter at bottom -->
+            <div class="stall-counter">
+              <div class="counter-top"></div>
+              <div class="counter-body">
+                <div class="sock-filter">
+                  <div class="sock-handle"></div>
+                  <div class="sock-ring"></div>
+                  <div class="sock-cloth"></div>
+                </div>
+                <div class="condensed-can"></div>
+                <div class="condensed-can"></div>
+                <div class="cup-rack">
+                  <div class="mini-cup"></div>
+                  <div class="mini-cup"></div>
+                  <div class="mini-cup"></div>
+                  <div class="mini-cup"></div>
+                  <div class="mini-cup"></div>
+                </div>
+                <div class="sock-filter">
+                  <div class="sock-handle"></div>
+                  <div class="sock-ring"></div>
+                  <div class="sock-cloth"></div>
+                </div>
+                <div class="condensed-can"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Ceiling fan animation, amber pendant lights, stall counter with sock filters and condensed milk cans</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 2: WORKSTATION — HOT DRINK -->
+  <div class="scene-label">Screen 2</div>
+  <h2 class="scene-title">Workstation — Hot Kopi</h2>
+  <p class="scene-desc">The main gameplay screen. Order tickets queue across the top. The cup sits on the marble counter in the center. Ingredient buttons line the bottom. Currently brewing a Kopi — coffee with condensed milk layer settling at the bottom.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-work">
+            <div class="order-queue">
+              <div class="order-ticket ticket-active">
+                <div class="ticket-cust">Uncle Tan</div>
+                <strong>Kopi</strong>
+                <div class="ticket-timer"><div class="timer-fill green"></div></div>
+              </div>
+              <div class="order-ticket">
+                <div class="ticket-cust">Auntie Lim</div>
+                <strong>Teh O Peng</strong>
+                <div class="ticket-timer"><div class="timer-fill yellow"></div></div>
+              </div>
+              <div class="order-ticket">
+                <div class="ticket-cust">Office Guy</div>
+                <strong>Kopi C Siew Dai</strong>
+                <div class="ticket-timer"><div class="timer-fill red"></div></div>
+              </div>
+            </div>
+
+            <div class="score-bar">
+              <span class="score-val">Score: 1,250</span>
+              <span class="streak-badge">🔥 x5 Streak</span>
+              <span class="lives">❤️❤️❤️</span>
+            </div>
+
+            <div class="workspace">
+              <div class="marble-surface"></div>
+              <div class="marble-veins"></div>
+              <div class="ws-cup-area">
+                <div class="ws-label">Brewing...</div>
+                <div class="ws-cup">
+                  <div class="cup-steam">
+                    <span class="steam-line"></span>
+                    <span class="steam-line"></span>
+                    <span class="steam-line"></span>
+                  </div>
+                  <div class="cup-liquid liquid-kopi"></div>
+                  <div class="liquid-milk-layer"></div>
+                  <div class="ws-cup-handle"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ingredient-tray">
+              <div class="ing-btn active">
+                <span class="ing-icon">☕</span>
+                <span class="ing-label">Coffee</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🫖</span>
+                <span class="ing-label">Tea</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🥛</span>
+                <span class="ing-label">Cond.<br>Milk</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍬</span>
+                <span class="ing-label">Sugar</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🧊</span>
+                <span class="ing-label">Ice</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">💧</span>
+                <span class="ing-label">Water</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍫</span>
+                <span class="ing-label">Milo</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🫙</span>
+                <span class="ing-label">Evap.<br>Milk</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🥤</span>
+                <span class="ing-label">Fresh<br>Milk</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🌹</span>
+                <span class="ing-label">Rose</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍋</span>
+                <span class="ing-label">Lime</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍦</span>
+                <span class="ing-label">Ice Cr.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Order queue with patient timers, marble counter texture, hot cup with steam and condensed milk layer</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 3: WORKSTATION — ICED DRINK -->
+  <div class="scene-label">Screen 3</div>
+  <h2 class="scene-title">Workstation — Iced Kopi O Peng</h2>
+  <p class="scene-desc">An iced drink in progress. The tall glass shows ice cubes floating in black coffee, with a red straw. Different glassware for hot vs. iced drinks adds visual variety and teaches players the "Peng" modifier.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-work">
+            <div class="order-queue">
+              <div class="order-ticket ticket-active">
+                <div class="ticket-cust">Student</div>
+                <strong>Kopi O Peng</strong>
+                <div class="ticket-timer"><div class="timer-fill green"></div></div>
+              </div>
+              <div class="order-ticket">
+                <div class="ticket-cust">Ah Beng</div>
+                <strong>Teh C Siew Dai</strong>
+                <div class="ticket-timer"><div class="timer-fill green"></div></div>
+              </div>
+            </div>
+
+            <div class="score-bar">
+              <span class="score-val">Score: 2,480</span>
+              <span class="streak-badge">🔥 x8 Streak</span>
+              <span class="lives">❤️❤️❤️</span>
+            </div>
+
+            <div class="workspace">
+              <div class="marble-surface"></div>
+              <div class="marble-veins"></div>
+              <div class="ws-cup-area">
+                <div class="ws-label">Add ice</div>
+                <div class="ws-glass">
+                  <div class="glass-straw"></div>
+                  <div class="glass-ice ice1"></div>
+                  <div class="glass-ice ice2"></div>
+                  <div class="glass-ice ice3"></div>
+                  <div class="glass-liquid"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ingredient-tray">
+              <div class="ing-btn">
+                <span class="ing-icon">☕</span>
+                <span class="ing-label">Coffee</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🫖</span>
+                <span class="ing-label">Tea</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🥛</span>
+                <span class="ing-label">Cond.<br>Milk</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍬</span>
+                <span class="ing-label">Sugar</span>
+              </div>
+              <div class="ing-btn active">
+                <span class="ing-icon">🧊</span>
+                <span class="ing-label">Ice</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">💧</span>
+                <span class="ing-label">Water</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍫</span>
+                <span class="ing-label">Milo</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🫙</span>
+                <span class="ing-label">Evap.<br>Milk</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🥤</span>
+                <span class="ing-label">Fresh<br>Milk</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🌹</span>
+                <span class="ing-label">Rose</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍋</span>
+                <span class="ing-label">Lime</span>
+              </div>
+              <div class="ing-btn">
+                <span class="ing-icon">🍦</span>
+                <span class="ing-label">Ice Cr.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Tall glass for iced drinks, visible ice cubes, red straw — "Peng" means iced</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 4: CUSTOMER ORDER -->
+  <div class="scene-label">Screen 4</div>
+  <h2 class="scene-title">Customer Order — Uncle Arrives</h2>
+  <p class="scene-desc">When a new customer walks up, their order pops in a speech bubble with the Singlish phrasing. Below, the recipe decodes the order into actionable steps. The player taps to start making the drink.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-customer">
+            <div class="score-bar">
+              <span class="score-val">Score: 3,720</span>
+              <span class="streak-badge">🔥 x12 Streak</span>
+              <span class="lives">❤️❤️❤️</span>
+            </div>
+
+            <div class="cust-scene">
+              <div class="customer-char">
+                <div class="cust-head uncle-head">
+                  <div class="uncle-hair"></div>
+                  <div class="uncle-eyes">
+                    <div class="uncle-eye"></div>
+                    <div class="uncle-eye"></div>
+                  </div>
+                  <div class="uncle-mouth"></div>
+                </div>
+                <div class="cust-body uncle-body"></div>
+              </div>
+
+              <div class="speech-bubble">
+                <div class="speech-order">"Kopi Gao Siew Dai Peng"</div>
+                <div class="speech-flavor">Uncle always orders this one. Steady lah!</div>
+              </div>
+            </div>
+
+            <div class="recipe-panel">
+              <div class="recipe-title">Recipe Decode</div>
+              <div class="recipe-steps">
+                <div class="recipe-step done">
+                  <span class="step-num">1</span> Tall glass
+                </div>
+                <div class="recipe-step">
+                  <span class="step-num">2</span> Coffee (3s brew — GAO)
+                </div>
+                <div class="recipe-step">
+                  <span class="step-num">3</span> Cond. milk (half — SIEW DAI)
+                </div>
+                <div class="recipe-step">
+                  <span class="step-num">4</span> Add ice — PENG
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Singlish speech bubble, character illustration, recipe decode strip at bottom</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 5: TEH TARIK MINI-GAME -->
+  <div class="scene-label">Screen 5</div>
+  <h2 class="scene-title">Teh Tarik Mini-Game</h2>
+  <p class="scene-desc">When a Teh Tarik is ordered, a special rhythm-based mini-game triggers. The player swipes up and down to "pull" tea between two cups. A froth meter on the right tracks quality — hit the green zone for a perfect pull.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-tarik">
+            <div class="tarik-header">
+              <div class="tarik-title">Teh Tarik!</div>
+              <div class="tarik-sub">Swipe up and down to pull the tea</div>
+            </div>
+
+            <div class="tarik-area">
+              <div class="tarik-cups">
+                <div class="tarik-cup tarik-cup-top">
+                  <div class="cup-liquid" style="height:30%;background:linear-gradient(180deg,#8B5A2B,#6B3A1B);"></div>
+                </div>
+                <div class="tarik-stream"></div>
+                <div class="tarik-cup tarik-cup-bottom">
+                  <div class="cup-liquid" style="height:70%;background:linear-gradient(180deg,#c49a6c,#8B5A2B);"></div>
+                </div>
+              </div>
+
+              <div class="tarik-meter">
+                <div class="tarik-meter-label">Froth</div>
+                <div class="tarik-zone-perfect"></div>
+                <div class="tarik-meter-fill"></div>
+              </div>
+            </div>
+
+            <div class="tarik-instruction">
+              <span class="swipe-arrow">↕️</span>
+              Swipe to pull!
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Rhythm-based pull mechanic — tea streams between cups, froth meter tracks quality</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 6: RUSH HOUR -->
+  <div class="scene-label">Screen 6</div>
+  <h2 class="scene-title">Morning Rush Hour</h2>
+  <p class="scene-desc">The queue floods with orders. A crowd of waiting customer heads presses in from above. The red "RUSH HOUR" banner pulses. A 2x multiplier glows in the corner — survive the rush for bonus points.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-rush">
+            <div class="rush-banner">⚡ MORNING RUSH ⚡</div>
+
+            <div class="rush-queue">
+              <div class="rush-ticket"><strong>Kopi</strong></div>
+              <div class="rush-ticket"><strong>Teh O</strong></div>
+              <div class="rush-ticket"><strong>Milo Peng</strong></div>
+              <div class="rush-ticket"><strong>Kopi C</strong></div>
+              <div class="rush-ticket"><strong>Teh Tarik</strong></div>
+              <div class="rush-ticket"><strong>Kopi O</strong></div>
+              <div class="rush-ticket"><strong>Yuan Yang</strong></div>
+            </div>
+
+            <div class="score-bar">
+              <span class="score-val">Score: 5,230</span>
+              <span class="streak-badge">🔥 x15 Streak!</span>
+              <span class="lives">❤️❤️❤️</span>
+            </div>
+
+            <div class="rush-workspace">
+              <div class="rush-crowd">
+                <div class="crowd-dot cd1"></div>
+                <div class="crowd-dot cd2"></div>
+                <div class="crowd-dot cd3"></div>
+                <div class="crowd-dot cd4"></div>
+                <div class="crowd-dot cd5"></div>
+                <div class="crowd-dot cd6"></div>
+                <div class="crowd-dot cd7"></div>
+                <div class="crowd-dot cd8"></div>
+                <div class="crowd-dot cd9"></div>
+              </div>
+
+              <div class="marble-surface" style="position:absolute;inset:0;"></div>
+              <div class="ws-cup-area" style="position:relative;z-index:2;">
+                <div class="ws-cup">
+                  <div class="cup-steam">
+                    <span class="steam-line"></span>
+                    <span class="steam-line"></span>
+                    <span class="steam-line"></span>
+                  </div>
+                  <div class="cup-liquid liquid-teh"></div>
+                  <div class="ws-cup-handle"></div>
+                </div>
+              </div>
+
+              <div class="rush-multiplier">×2</div>
+            </div>
+
+            <div class="ingredient-tray">
+              <div class="ing-btn"><span class="ing-icon">☕</span><span class="ing-label">Coffee</span></div>
+              <div class="ing-btn active"><span class="ing-icon">🫖</span><span class="ing-label">Tea</span></div>
+              <div class="ing-btn"><span class="ing-icon">🥛</span><span class="ing-label">Cond. Milk</span></div>
+              <div class="ing-btn"><span class="ing-icon">🍬</span><span class="ing-label">Sugar</span></div>
+              <div class="ing-btn"><span class="ing-icon">🧊</span><span class="ing-label">Ice</span></div>
+              <div class="ing-btn"><span class="ing-icon">💧</span><span class="ing-label">Water</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Overflowing queue, crowd pressure, pulsing rush banner, ×2 score multiplier</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 7: SHIFT COMPLETE -->
+  <div class="scene-label">Screen 7</div>
+  <h2 class="scene-title">Shift Complete</h2>
+  <p class="scene-desc">End-of-shift results with stars earned, drink count, and unlocks. The "Better Sock" upgrade unlocks faster brew times. Stars gate progression to the next stage.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-complete">
+            <div class="complete-stars">
+              <span class="star earned">⭐</span>
+              <span class="star earned">⭐</span>
+              <span class="star">✩</span>
+            </div>
+
+            <div class="complete-title">Shift Complete!</div>
+            <div class="complete-shift">Shift 12 · Senior Stage</div>
+
+            <div class="complete-stats">
+              <div>
+                <div class="cstat-num">24</div>
+                <div class="cstat-label">Drinks<br>Served</div>
+              </div>
+              <div>
+                <div class="cstat-num">92%</div>
+                <div class="cstat-label">Accuracy</div>
+              </div>
+              <div>
+                <div class="cstat-num">15</div>
+                <div class="cstat-label">Best<br>Streak</div>
+              </div>
+            </div>
+
+            <div class="complete-unlock">
+              <div class="unlock-label">🔓 New Unlock!</div>
+              <div class="unlock-item">Better Sock Filter</div>
+              <div class="unlock-desc">Brew time reduced by 0.5 seconds</div>
+            </div>
+
+            <button class="complete-btn">Next Shift →</button>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Star ratings, shift stats, and unlock reveals drive the "one more shift" loop</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 8: STALL UPGRADES -->
+  <div class="scene-label">Screen 8</div>
+  <h2 class="scene-title">Stall Upgrades</h2>
+  <p class="scene-desc">Between shifts, spend coins on upgrades that improve efficiency. Each upgrade changes the workstation visually — a new sock filter hangs on the rack, the ice machine appears, etc.</p>
+
+  <div class="phone-row">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="scr-upgrade">
+            <div class="upgrade-header">
+              <div class="upgrade-title">My Stall</div>
+              <div class="coin-badge">🪙 850</div>
+            </div>
+
+            <div class="upgrade-card purchased">
+              <div class="upgrade-icon">🧦</div>
+              <div class="upgrade-info">
+                <div class="upgrade-name">Better Sock Filter</div>
+                <div class="upgrade-desc">Brew time -0.5s. Less chance of burning.</div>
+              </div>
+              <span class="upgrade-owned">✓ Owned</span>
+            </div>
+
+            <div class="upgrade-card">
+              <div class="upgrade-icon">🧊</div>
+              <div class="upgrade-info">
+                <div class="upgrade-name">Auto Ice Machine</div>
+                <div class="upgrade-desc">One-tap ice instead of dragging cubes individually.</div>
+              </div>
+              <button class="upgrade-price">🪙 500</button>
+            </div>
+
+            <div class="upgrade-card">
+              <div class="upgrade-icon">🔥</div>
+              <div class="upgrade-info">
+                <div class="upgrade-name">Second Burner</div>
+                <div class="upgrade-desc">Brew two drinks at once. Essential for rush hour.</div>
+              </div>
+              <button class="upgrade-price">🪙 1,200</button>
+            </div>
+
+            <div class="upgrade-card">
+              <div class="upgrade-icon">🫖</div>
+              <div class="upgrade-info">
+                <div class="upgrade-name">Express Kettle</div>
+                <div class="upgrade-desc">Hot water pours faster. Saves precious seconds.</div>
+              </div>
+              <button class="upgrade-price">🪙 800</button>
+            </div>
+
+            <div class="upgrade-card">
+              <div class="upgrade-icon">📋</div>
+              <div class="upgrade-info">
+                <div class="upgrade-name">Bigger Order Board</div>
+                <div class="upgrade-desc">See 5 orders in queue instead of 3.</div>
+              </div>
+              <button class="upgrade-price">🪙 600</button>
+            </div>
+
+            <div class="upgrade-card">
+              <div class="upgrade-icon">🏪</div>
+              <div class="upgrade-info">
+                <div class="upgrade-name">Kopitiam Signboard</div>
+                <div class="upgrade-desc">Cosmetic. Classic hand-painted shop sign.</div>
+              </div>
+              <button class="upgrade-price">🪙 300</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-caption">Functional upgrades affect gameplay; cosmetics customize your stall</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== AMBIENCE & STYLE ==================== -->
+<div id="s-ambience" class="section">
+
+  <div class="scene-label">Visual Identity</div>
+  <h2 class="scene-title">Kopitiam Ambience</h2>
+  <p class="scene-desc">The game lives in the warm, nostalgic world of Singapore's traditional coffee shops — formica tables, marble counters, sock filters, fluorescent tubes mixed with amber bulbs, and the comforting clatter of cups.</p>
+
+  <h3 style="text-align:center;font-size:0.85em;color:#8B4513;text-transform:uppercase;letter-spacing:3px;margin:30px 0 10px;">Color Palette</h3>
+
+  <div class="palette-grid">
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#2c1a10;"></div>
+      <div class="pal-name">Dark Brew</div>
+      <div class="pal-hex">#2C1A10</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#8B4513;"></div>
+      <div class="pal-name">Kopi Brown</div>
+      <div class="pal-hex">#8B4513</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#DEB887;"></div>
+      <div class="pal-name">Teh Tarik</div>
+      <div class="pal-hex">#DEB887</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#F5DEB3;"></div>
+      <div class="pal-name">Condensed</div>
+      <div class="pal-hex">#F5DEB3</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#F5F5DC;"></div>
+      <div class="pal-name">Porcelain</div>
+      <div class="pal-hex">#F5F5DC</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#FFEFD5;"></div>
+      <div class="pal-name">Evap Milk</div>
+      <div class="pal-hex">#FFEFD5</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#8B7355;"></div>
+      <div class="pal-name">Marble Vein</div>
+      <div class="pal-hex">#8B7355</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#C41E3A;"></div>
+      <div class="pal-name">Red Label</div>
+      <div class="pal-hex">#C41E3A</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#4CAF50;"></div>
+      <div class="pal-name">Success</div>
+      <div class="pal-hex">#4CAF50</div>
+    </div>
+    <div class="pal-swatch">
+      <div class="pal-color" style="background:#FFD700;"></div>
+      <div class="pal-name">Coin / Star</div>
+      <div class="pal-hex">#FFD700</div>
+    </div>
+  </div>
+
+  <h3 style="text-align:center;font-size:0.85em;color:#8B4513;text-transform:uppercase;letter-spacing:3px;margin:40px 0 10px;">Art Direction</h3>
+
+  <div class="art-grid">
+    <div class="art-card">
+      <h4>🏪 The Stall</h4>
+      <p>Classic kopitiam drinks stall: marble counter, cup rack with porcelain cups upside-down, sock filters (kopi sock) hanging from hooks, rows of condensed milk cans with two punched holes, hot water urn with steam, tall glasses for iced drinks. Everything has the patina of decades of use.</p>
+    </div>
+    <div class="art-card">
+      <h4>🪑 The Setting</h4>
+      <p>Overhead: slow ceiling fan (always). Fluorescent tube lighting mixed with warm incandescent bulbs. Green-and-white formica tables visible in background. Red plastic stools. Tissue paper packets "choping" seats. Morning newspaper on a table. Old TV on a shelf playing the news.</p>
+    </div>
+    <div class="art-card">
+      <h4>🎨 Style: Warm Cartoon</h4>
+      <p>Colorful but grounded 2D illustration. Not pixel art — smooth lines with warm shading. Think "Overcooked" meets local flavor. Characters are slightly exaggerated Singaporean archetypes drawn with affection. Food and drinks should look appetizing — the condensed milk pour must make people crave kopi.</p>
+    </div>
+    <div class="art-card">
+      <h4>🧦 The Sock Filter</h4>
+      <p>The iconic kopi sock is the visual centerpiece. Long cloth filter on a wire frame, stained dark brown from years of use. When brewing, coffee pours through in a thick dark stream. The sock should feel like a character itself — the tool that makes kopitiam coffee different from everything else.</p>
+    </div>
+    <div class="art-card">
+      <h4>☕ Liquid Physics</h4>
+      <p>Drinks should look satisfying. Coffee is dark and opaque. Condensed milk is thick and golden — it sinks and swirls. Evaporated milk is lighter, creamier. Tea is amber-brown. Ice cubes clink and bob. Teh Tarik streams in a frothy arc between cups. The Milo Dinosaur has visible powder sprinkled on top.</p>
+    </div>
+    <div class="art-card">
+      <h4>🗣️ Singlish Flavor</h4>
+      <p>All text uses natural Singlish: "Can!", "Shiok!", "Wah, power lah", "Aiyah, wrong one". Customer speech bubbles feel like actual kopitiam conversation. Menu items in English + Chinese characters. Order tickets look like real kopitiam chits — cream paper, handwritten-style font.</p>
+    </div>
+  </div>
+
+  <h3 style="text-align:center;font-size:0.85em;color:#8B4513;text-transform:uppercase;letter-spacing:3px;margin:40px 0 10px;">Audio Atmosphere</h3>
+
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="padding:12px 0;border-bottom:1px solid #2c1e14;display:flex;gap:12px;align-items:baseline;">
+      <span style="color:#8B4513;font-weight:700;font-size:1.2em;">🎵</span>
+      <div>
+        <div style="font-size:0.85em;font-weight:600;color:#F5DEB3;">Ambient Layer</div>
+        <div style="font-size:0.75em;color:#8B7355;margin-top:2px;">Ceiling fan hum, distant conversation murmur, occasional bird outside, clinking porcelain, the muted thud of cups on marble, newspaper rustling</div>
+      </div>
+    </div>
+    <div style="padding:12px 0;border-bottom:1px solid #2c1e14;display:flex;gap:12px;align-items:baseline;">
+      <span style="color:#8B4513;font-weight:700;font-size:1.2em;">🎶</span>
+      <div>
+        <div style="font-size:0.85em;font-weight:600;color:#F5DEB3;">Gameplay Music</div>
+        <div style="font-size:0.75em;color:#8B7355;margin-top:2px;">Lo-fi chill with Singaporean flavor — light xylophone, gentle bass, maybe a bit of guzheng or erhu melody woven in. Tempo rises during rush hour. Drops to calm between shifts.</div>
+      </div>
+    </div>
+    <div style="padding:12px 0;border-bottom:1px solid #2c1e14;display:flex;gap:12px;align-items:baseline;">
+      <span style="color:#8B4513;font-weight:700;font-size:1.2em;">☕</span>
+      <div>
+        <div style="font-size:0.85em;font-weight:600;color:#F5DEB3;">Drink-Making SFX</div>
+        <div style="font-size:0.75em;color:#8B7355;margin-top:2px;">Coffee sock squeeze (cloth wringing), thick pour of condensed milk (glug), sugar spoon tink, ice cubes dropping into glass (clink clink), teh tarik arc (swoosh), hot water pour (ssssh), Milo powder sprinkle (soft rain)</div>
+      </div>
+    </div>
+    <div style="padding:12px 0;border-bottom:1px solid #2c1e14;display:flex;gap:12px;align-items:baseline;">
+      <span style="color:#8B4513;font-weight:700;font-size:1.2em;">😊</span>
+      <div>
+        <div style="font-size:0.85em;font-weight:600;color:#F5DEB3;">Customer Reactions</div>
+        <div style="font-size:0.75em;color:#8B7355;margin-top:2px;">Happy: "Wah, shiok!" / "Can, uncle!" / "Steady lah!" — Impatient: "Eh faster can?" / *tsk* / tapping on counter — Wrong drink: "Aiyoh, this one wrong leh" / "Uncle, I order teh, not kopi!"</div>
+      </div>
+    </div>
+    <div style="padding:12px 0;display:flex;gap:12px;align-items:baseline;">
+      <span style="color:#8B4513;font-weight:700;font-size:1.2em;">🎯</span>
+      <div>
+        <div style="font-size:0.85em;font-weight:600;color:#F5DEB3;">Reward Sounds</div>
+        <div style="font-size:0.75em;color:#8B7355;margin-top:2px;">Perfect drink: satisfying cash register cha-ching + crowd murmur. Streak milestone: rising xylophone scale. Shift complete: closing shutter rattle + evening crickets. Star earned: bright chime.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="text-align:center;font-size:0.85em;color:#8B4513;text-transform:uppercase;letter-spacing:3px;margin:40px 0 10px;">Kopitiam Details</h3>
+
+  <div style="max-width:600px;margin:0 auto;font-size:0.82em;color:#8B7355;line-height:1.8;">
+    <p>The magic is in the details that Singaporeans will instantly recognize:</p>
+    <ul style="padding-left:20px;margin-top:10px;">
+      <li><strong style="color:#DEB887;">Condensed milk cans</strong> with two triangular holes punched in the top — always two</li>
+      <li><strong style="color:#DEB887;">The sock filter</strong> (kopi kao) stained permanently brown, cloth stretched over a wire frame with a long handle</li>
+      <li><strong style="color:#DEB887;">Porcelain cups</strong> — the thick white ones, slightly chipped, stacked upside-down</li>
+      <li><strong style="color:#DEB887;">Tall glasses</strong> for iced drinks with red or green striped straws</li>
+      <li><strong style="color:#DEB887;">Metal spoons</strong> in a cup on the counter</li>
+      <li><strong style="color:#DEB887;">The pour technique</strong> — raising the sock high to aerate the coffee as it streams down</li>
+      <li><strong style="color:#DEB887;">Order chits</strong> — small pieces of cream paper with drink codes written in pen</li>
+      <li><strong style="color:#DEB887;">Marble counter</strong> with grey-green veins, worn smooth from decades</li>
+      <li><strong style="color:#DEB887;">Pricing board</strong> — hand-painted white text on red or green background</li>
+      <li><strong style="color:#DEB887;">Plastic bags</strong> for takeaway drinks — kopi in a bag with straw poking out</li>
+      <li><strong style="color:#DEB887;">Tissue paper packets</strong> on tables — the universal seat reservation system</li>
+    </ul>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
